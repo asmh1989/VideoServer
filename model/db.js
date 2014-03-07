@@ -11,7 +11,7 @@ mongoose.connect('mongodb://'+settings.db, function(err){
 var latestModels = [];
 var videoDetailModels = [];
 
-require('./website.js')();
+require('./Website.js')();
 var websiteModel =  mongoose.model('website');
 
 //缓存所有网站的分类
