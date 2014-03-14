@@ -40,7 +40,21 @@ module.exports = function(req, res){
                         return;
                     //1: 获取分类适配, 需要href
                     case '1':
-                        resEnd(res, {SORRY:'等待完善'});
+//                        resEnd(res, {SORRY:'等待完善'});
+                        var cat = query.category;
+                        var start = query.start;
+                        if(!start){
+                           start = 0;
+                        }
+                        var myDate = new Date();
+                        console.log(myDate.toString()+'=====抓取分类视频 category = '+cat+' start='+start);
+
+                        db.getCategoryVideos(website, cat, start, function(r){
+                            for(var i = 0; i< r.length; i++){
+                                r[i]._id = undefined;
+                            }
+                            resEnd(res, r);
+                        })
                         return;
                     //2: 获取视频详细信息, 需要href
                     case '2':
