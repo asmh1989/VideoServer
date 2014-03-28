@@ -25,7 +25,7 @@ module.exports = function(req, res){
             if(!type){
                 db.getCategory(website, function(r){
 //                var m = {r};
-                    resEnd(res, r);
+                    resEnd(res, {category:r});
                 });
             }
             else if(website && type){
@@ -35,7 +35,7 @@ module.exports = function(req, res){
                     case '0':
                         var cat = query.category;
                         db.getLatest(website, cat, function(r){
-                            resEnd(res, r);
+                            resEnd(res, {videos:r});
                         });
                         return;
                     //1: 获取分类适配, 需要href
@@ -53,13 +53,13 @@ module.exports = function(req, res){
                             for(var i = 0; i< r.length; i++){
                                 r[i]._id = undefined;
                             }
-                            resEnd(res, r);
+                            resEnd(res, {videos:r});
                         })
                         return;
                     //2: 获取视频详细信息, 需要href
                     case '2':
                         db.getVideoDetail(website, href, function(r){
-                            resEnd(res, r);
+                            resEnd(res, {videodetail:r});
                         });
                         return;
                     default:
