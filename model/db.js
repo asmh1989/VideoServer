@@ -136,20 +136,20 @@ var DB = {
                 if(doc == null){
                     callback({ERR:'该类别的最新视频,似乎不存在'});
                 } else {
-                    var result = [];
-                    for(var i = 0; i < doc.content.length; i++){
-                        var c = doc.content[i];
-                        var m = {};
-                        m.name = c.name;
-                        m.href = c.href;
-                        m.img = c.img;
-                        result.push(m);
-                    }
+//                    var result = [];
+//                    for(var i = 0; i < doc.content.length; i++){
+//                        var c = doc.content[i];
+//                        var m = {};
+//                        m.name = c.name;
+//                        m.href = c.href;
+//                        m.img = c.img;
+//                        result.push(m);
+//                    }
 
-                    callback(result);
+                    callback(doc.content);
 
                     var latest = {
-                        name:cat, content:result
+                        name:cat, content:doc.content
                     }
 
                     if(latestCache.indexOf(latest) == -1){
