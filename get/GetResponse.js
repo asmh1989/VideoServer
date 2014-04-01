@@ -50,9 +50,9 @@ module.exports = function(req, res){
                         console.log(myDate.toString()+'=====抓取分类视频 category = '+cat+' start='+start);
 
                         db.getCategoryVideos(website, cat, start, function(r){
-                            for(var i = 0; i< r.length; i++){
-                                r[i]._id = undefined;
-                            }
+                            // for(var i = 0; i< r.length; i++){
+                            //     r[i]._id = undefined;
+                            // }
                             resEnd(res, {videos:r});
                         })
                         return;
